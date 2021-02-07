@@ -7,7 +7,7 @@ const initialFlamingoState = ['Mr Bigglesworth', 'Mrs Brown', 'Winston']
 const wombatReducer = (state = initialWombatState, action) => {
   switch (action.type) {
     case 'ADD_WOMBAT':
-      return [...state.wombats, action.wombat]
+      return [...state, action.wombat]
     case 'DEL_WOMBAT':
       return state.filter((wombat) => wombat !== action.wombat)
     case 'UPDATE_WOMBAT':
@@ -25,7 +25,7 @@ const wombatReducer = (state = initialWombatState, action) => {
 const flamingoReducer = (state = initialFlamingoState, action) => {
   switch(action.type) {
     case 'ADD_FLAMINGO':
-      return [...state, action.flamingos]
+      return [...state, action.flamingo]
       case 'DEL_FLAMINGO':
         return state.filter((flamingo) => flamingo !== action.flamingo)
       case 'UPDATE_FLAMINGO':

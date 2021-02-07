@@ -5,8 +5,6 @@ function Wombats(props) {
   const state = store.getState()
   const wombats = state.wombats
 
-  console.log(state)
-
   const deleteWombat = (wombat) => {
     const action = {
       type: 'DEL_WOMBAT',

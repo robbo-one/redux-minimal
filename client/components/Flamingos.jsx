@@ -18,7 +18,7 @@ const deleteFlamingo = (flamingo) => {
     evt.preventDefault()
     const action = {
       type: 'ADD_FLAMINGO',
-      wombat: evt.target.newFlamingo.value
+      flamingo: evt.target.newFlamingo.value
     }
     store.dispatch(action)
   }
