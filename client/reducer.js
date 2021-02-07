@@ -1,66 +1,49 @@
-import { combineReducers } from "redux";
+import { combineReducers } from "redux"
 
-const initialWombatState = {
-  wombats: ["Gertrude", "Bartholemew"],
-};
+const initialState = {
+  wombats: [],
+  aardvarks: []
+}
 
-const initialAardvarkState = {
-  aardvarks: ["Aard", "Varky"],
-};
-
-export const wombatReducer = (state = initialWombatState, action) => {
+const wombatReducer = (state = initialState.wombats, action) => {
   switch (action.type) {
     case "ADD_WOMBAT":
-      return {
-        wombats: [...state.wombats, action.wombat],
-      };
-
+      return [...state, action.wombat]
     case "DEL_WOMBAT":
-      return {
-        wombats: state.wombats.filter((wombat) => wombat !== action.wombat),
-      };
-
+      return state.filter((wombat) => wombat !== action.wombat)
     case "UPDATE_WOMBAT":
-      return {
-        wombats: state.wombats.map((wombat) => {
-          return wombat === action.oldWombat ? action.newWombat : wombat;
-        }),
-      };
-
+      return state.map((wombat) => {
+          return wombat === action.oldWombat ? action.newWombat : wombat
+        })
     default:
-      return state;
+      return state
   }
-};
+}
 
-export const aardvarkReducer = (state = initialAardvarkState, action) => {
+const aardvarkReducer = (state = initialState.aardvarks, action) => {
   switch (action.type) {
     case "ADD_AARDVARK":
-      return {
-        aardvarks: [...state.aardvarks, action.aardvark],
-      };
+      return [...state, action.aardvark]
 
     case "DEL_AARDVARK":
-      return {
-        aardvarks: state.aardvarks.filter(
+      return state.filter(
           (aardvark) => aardvark !== action.aardvark
-        ),
-      };
-
+        )
     case "UPDATE_AARDVARK":
-      return {
-        aardvarks: state.aardvarks.map((aardvark) => {
+      return state.map((aardvark) => {
           return aardvark === action.oldAardvark
             ? action.newAardvark
-            : aardvark;
-        }),
-      };
-
+            : aardvark
+        })
     default:
-      return state;
+      return state
   }
-};
+}
 
 export const reducer = combineReducers({
   wombats: wombatReducer,
   aardvarks: aardvarkReducer,
-});
+})
+
+// wombats: ["Gertrude", "Bartholemew"],
+//   aardvarks: ["Aard", "Varky"]

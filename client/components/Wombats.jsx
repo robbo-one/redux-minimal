@@ -3,7 +3,8 @@ import React from "react"
 function Wombats(props) {
   const { store } = props
   const state = store.getState()
-  const wombats = state.wombats.wombats
+  const wombats = state.wombats
+  // console.log(wombats)
 
   // console.log(wombats)
 

@@ -3,7 +3,7 @@ import React from 'react'
 function Aardvarks(props){
   const { store } = props
   const state = store.getState()
-  const aardvarks = state.aardvarks.aardvarks
+  const aardvarks = state.aardvarks
 
   const deleteAardvark = (aardvark) => {
     store.dispatch({
