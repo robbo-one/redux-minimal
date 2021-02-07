@@ -39,6 +39,18 @@ const handleDelete =(event, wombat) => {
   }
   store.dispatch(action)
 }
+
+const handleAdd =(event) => {
+  console.log(formData)
+  event.preventDefault()
+  const action ={
+    type: 'ADD_WOMBAT',
+    wombat: formData.wombat
+  }
+  store.dispatch(action)
+}
+
+
   return (
     <div>
       <h1>Wombats</h1>
@@ -49,8 +61,16 @@ const handleDelete =(event, wombat) => {
 
       <form onSubmit={handleSubmit}>
        <label>
-          Update Wombat
-          <input type="text" name ='newWombat' onChange={(event) => handleChange(event)}/>
+          Update Wombat:
+          <input type="text" name ='updated' onChange={(event) => handleChange(event)}/>
+          </label>
+          <button>Submit</button> 
+           </form>
+
+           <form onSubmit={handleAdd}>
+       <label>
+          Add a Wombat:
+          <input type="text" name ='wombat' onChange={(event) => handleChange(event)}/>
           </label>
           <button>Submit</button> 
            </form>
