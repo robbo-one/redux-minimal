@@ -4,6 +4,7 @@ function Wombats (props) {
   const {store} = props
   const state = store.getState()
   const wombats = state.wombats
+
   return (
     <div>
       <h1>Wombats</h1>

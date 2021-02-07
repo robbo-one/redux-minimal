@@ -1,0 +1,9 @@
+{
+type: 'ADD_WOMBAT',
+wombat: "Sally"
+}
+
+{
+type: 'DEL_WOMBAT',
+wombat: "Gertrude"
+}

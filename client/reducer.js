@@ -1,8 +1,10 @@
+
 const initialWombatState = {
   wombats: ['Gertrude', 'Bartholemew']
 }
 
 const wombatReducer = (state = initialWombatState, action) => {
+  console.log(state)
   switch (action.type) {
     case 'ADD_WOMBAT':
       return {
@@ -12,9 +14,16 @@ const wombatReducer = (state = initialWombatState, action) => {
       return {
         wombats: state.wombats.filter((wombat) => wombat !== action.wombat)
       }
+    case 'UPDATE_WOMBAT':
+      return {
+        wombats: state.wombats.map(wombat => {
+          return wombat === action.oldWombat ? action.newWombat : wombat
+        })
+    }
     default:
       return state
   }
+  
 }
 
-export default wombatReducer
+export default  wombatReducer
