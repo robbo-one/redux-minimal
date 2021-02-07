@@ -1,29 +1,48 @@
-const initialWombatState = {
-  wombats: ['Gertrude', 'Bartholemew']
-}
+import { combineReducers } from 'redux'
+
+const initialWombatState = ['Gertrude', 'Bartholemew']
+
+const initialFlamingoState = ['Mr Bigglesworth', 'Mrs Brown', 'Winston']
 
 const wombatReducer = (state = initialWombatState, action) => {
   switch (action.type) {
     case 'ADD_WOMBAT':
-      return {
-        wombats: [...state.wombats, action.wombat]
-      }
+      return [...state.wombats, action.wombat]
     case 'DEL_WOMBAT':
-      return {
-        wombats: state.wombats.filter((wombat) => wombat !== action.wombat)
-      }
+      return state.filter((wombat) => wombat !== action.wombat)
     case 'UPDATE_WOMBAT':
-      return{
-        wombats: state.wombats.map((wombat) => {
+      return state.map((wombat) => {
          if (wombat == action.wombat){
           wombat = action.newName  
          }
            return wombat
         })
-      }
     default:
       return state
   }
 }
 
-export default wombatReducer
+const flamingoReducer = (state = initialFlamingoState, action) => {
+  switch(action.type) {
+    case 'ADD_FLAMINGO':
+      return [...state, action.flamingos]
+      case 'DEL_FLAMINGO':
+        return state.filter((flamingo) => flamingo !== action.flamingo)
+      case 'UPDATE_FLAMINGO':
+        return state.map((flamingo) => {
+           if (flamingo == action.flamingo){
+            flamingo = action.newName  
+           }
+             return flamingo
+          })
+      default:
+        return state
+  }
+}
+
+const rootReducer = combineReducers({
+  wombat: wombatReducer,
+  flamingos: flamingoReducer
+})
+
+export default rootReducer
