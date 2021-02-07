@@ -17,12 +17,12 @@ function Wombats (props) {
     })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event, wombat) => {
     event.preventDefault()
     const action = {
       type: 'UPDATE_WOMBAT',
-      wombat: 'Gertrude',
-      newWombat: 'Gerty'
+      wombat: wombat,
+      newWombat: event.target.newWombat.value
     }
     store.dispatch(action)
   }
@@ -36,16 +36,37 @@ function Wombats (props) {
     store.dispatch(action)
   }
 
+  const addWombat = (event) => {
+    event.preventDefault()
+    const action = {
+      type: 'ADD_WOMBAT',
+      wombat: formData.wombat
+    }
+    store.dispatch(action)
+  }
+
   return (
-    <div>
+    <div className='container'>
       <h1>Wombats</h1>
+
       <ul>
-        {wombats.map((wombat) => <li key={wombat}>{wombat}<button onClick={(event) => handleDelete(event, wombat)}>Delete</button></li>)}
+        {wombats.map((wombat) => 
+        <li key={wombat}>{wombat}
+          <form onSubmit={(event) => handleSubmit(event, wombat)}>
+            <label>
+              Update Wombat:
+              <input type='text' name='newWombat' />
+            </label>
+            <button>Submit</button>
+          </form>
+          <button onClick={(event) => handleDelete(event, wombat)}>Delete</button>
+        </li>)}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Update Wombat:
-          <input type='text' name='newWombat' onChange={(event) => handleChange(event)} />
+
+      <form onSubmit={addWombat}>
+      <label>
+          Add Wombat:
+          <input type='text' name='wombat' onChange={(event) => handleChange(event)} />
         </label>
         <button>Submit</button>
       </form>
