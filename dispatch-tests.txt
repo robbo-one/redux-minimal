@@ -1,0 +1,13 @@
+{
+type: 'ADD_WOMBAT',
+wombat: 'Smelly'
+}
+{
+type: 'DEL_WOMBAT',
+wombat: 'Smelly'
+}
+{
+type: 'UPDATE_WOMBAT',
+name: 'Poo',
+prevWombat: "Gertrude"
+}
