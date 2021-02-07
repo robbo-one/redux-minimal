@@ -46,30 +46,35 @@ function Wombats (props) {
   }
 
   return (
-    <div className='container'>
-      <h1>Wombats</h1>
+    <div className='center'>
+      <div className='container'>
+        <h1>Wombats</h1>
 
-      <ul>
-        {wombats.map((wombat) => 
-        <li key={wombat}>{wombat}
-          <form onSubmit={(event) => handleSubmit(event, wombat)}>
-            <label>
-              Update Wombat:
-              <input type='text' name='newWombat' />
+        <ul>
+          {wombats.map((wombat) => 
+          <li key={wombat}>{wombat}
+            <form onSubmit={(event) => handleSubmit(event, wombat)}>
+              <label>
+                Update Wombat:
+                <input type='text' name='newWombat' />
+              </label>
+              <button>Submit</button>
+            </form>
+            <button onClick={(event) => handleDelete(event, wombat)}>Delete</button>
+          </li>)}
+        </ul>
+        
+        <div className='wombat-container'>
+          <form onSubmit={addWombat}>
+          <label>
+              Add Wombat:
+              <input type='text' name='wombat' onChange={(event) => handleChange(event)} />
             </label>
             <button>Submit</button>
           </form>
-          <button onClick={(event) => handleDelete(event, wombat)}>Delete</button>
-        </li>)}
-      </ul>
+        </div>
 
-      <form onSubmit={addWombat}>
-      <label>
-          Add Wombat:
-          <input type='text' name='wombat' onChange={(event) => handleChange(event)} />
-        </label>
-        <button>Submit</button>
-      </form>
+      </div>
     </div>
   )
 }
