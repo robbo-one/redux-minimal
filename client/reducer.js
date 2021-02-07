@@ -16,7 +16,6 @@ const wombatReducer = (state = initialWombatState, action) => {
       // const w = wombats.find(wombat => wombat == action.wombat)
       return {
         wombats: state.wombats.map(wombat => {
-          console.log(wombat)
          return wombat === action.oldWombat ? action.newWombat : wombat
         })
       }
@@ -25,5 +24,4 @@ const wombatReducer = (state = initialWombatState, action) => {
   }
 }
 
-// wombat == action.oldWombat && action.newWombat
 export default wombatReducer
