@@ -15,11 +15,7 @@ function Wombats(props) {
 
   const addWombat = (evt) => {
     evt.preventDefault()
-    const action = {
-      type: 'ADD_WOMBAT',
-      wombat: evt.target.newWombat.value
-    }
-    store.dispatch(action)
+    store.dispatch(addWombat(evt.target.newWombat.value))
   }
 
   const updateWombat = (wombat, evt) => {
