@@ -1,0 +1,55 @@
+body {
+    background-image: url('https://i.pinimg.com/originals/8f/1b/cc/8f1bcca10ee9f32330342d5476c1d2af.jpg');
+background-repeat: no-repeat;
+background-size:cover;
+}
+
+h1{
+    color:white;
+    font-size: 100px;
+}
+
+form {
+    margin-left: 500px;
+    width: 500px;
+    height:auto;
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+
+}
+
+label {
+    font-size: 50px;
+    color: white;
+}
+
+input {
+    width: 500px;
+    height:auto;
+}
+
+button {
+    width: 200px;
+    height: auto;
+}
+
+li{
+    display:flex;
+    flex-direction: column ;
+    width:fit-content;
+    font-size: 50px;
+    color:white;
+    align-content: center;
+
+}
+
+ul {
+    display:flex;
+    flex-direction: column ;
+    width:fit-content; 
+    justify-content: center;
+    align-items:center;
+}
