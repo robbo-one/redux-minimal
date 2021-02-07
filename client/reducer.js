@@ -1,6 +1,11 @@
+import { combineReducers } from 'redux'
+
 const initialWombatState = {
-  wombats: ['Gertrude', 'Bartholemew']
-}
+  wombats: ['Gertrude', 'Bartholemew']}
+const initialAardvarkState = {
+    aardvarks: ['leptodon', 'adametzi']
+  }
+
 
 const wombatReducer = (state = initialWombatState, action) => {
   switch (action.type) {
@@ -26,4 +31,14 @@ const wombatReducer = (state = initialWombatState, action) => {
   }
 }
 
+const aardvarkReducer = (state = initialAardvarkState, action) => {
+  if(action.type === 'ADD_AARDVARK') {
+      return {
+          aardvarks: [...state.wombats, action.aardvark]
+      }
+  }
+  else {
+      return state
+  }
+}
 export default wombatReducer
