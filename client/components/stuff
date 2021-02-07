@@ -1,0 +1,11 @@
+{
+type: 'ADD_WOMBAT',
+wombat: 'Corny'
+}
+
+
+{
+type: 'UPDATE_WOMBAT',
+oldWombat: 'Gertrude',
+newWombat: 'Gerty'
+}
