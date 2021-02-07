@@ -41,7 +41,7 @@ const flamingoReducer = (state = initialFlamingoState, action) => {
 }
 
 const rootReducer = combineReducers({
-  wombat: wombatReducer,
+  wombats: wombatReducer,
   flamingos: flamingoReducer
 })
 
