@@ -20,4 +20,3 @@ export const wombatReducer = (state = initialWombatState, action) => {
 }
 
 export default wombatReducer
-
