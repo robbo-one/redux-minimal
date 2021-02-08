@@ -1,5 +1,5 @@
-import React from 'react'
-import wombatReducer from '../reducer'
+import React, { useState } from 'react'
+
 
 function Wombats (props) {
   console.log(props)
@@ -8,6 +8,14 @@ function Wombats (props) {
   const state = store.getState()
   //getState returns the current state tree of your application. It's equal to the last value returned by the store's reducer.
   const wombats = state.wombats
+
+  function addWombat (wombat) {
+    const action = {
+      type: 'ADD_WOMBAT',
+      wombat: wombat
+    }
+    store.dispatch(action)
+  }
 
   function deleteWombat (wombat) {
     const action = {
@@ -24,7 +32,8 @@ function Wombats (props) {
         {wombats.map((wombat) => <li key={wombat}>{wombat}   
         <button onClick={() => deleteWombat(wombat)} >Delete</button>
          
-         </li>)}  
+         </li>)}
+         <input type="text" name="name" onChange={newWombat}/> <button type="submit" onClick={() => addWombat(wombat)}>Add a Wombat!</button> 
       </ul>
     </div>
   )
