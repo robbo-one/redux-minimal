@@ -1,37 +1,24 @@
 import React, {useState, useEffect} from 'react'
+import {addWombat, deleteWombat, updateWombat} from '../actions/index'
 
 function Wombats (props) {
   const {store} = props
   const state = store.getState()
   const wombats = state.wombats
-  const aardvarks = state.aardvarks
-
-  const deleteWombat = (wombat) => {
-    const action = {
-      type: 'DEL_WOMBAT',
-      wombat: wombat
-    }
-    store.dispatch(action)
-  }
-
-  const addWombat = (wombat) => {
-    const action = {
-        type: 'ADD_WOMBAT',
-        wombat: wombat
-    }
   
-    store.dispatch(action)
+  const del = (wombat) => {
+    store.dispatch(deleteWombat(wombat))
   }
 
-  const updateWombat = (wombat, newWombat) => {
-    const action = {
-        type: 'UPDATE_WOMBAT',
-        wombat: wombat,
-        newWombat: newWombat
-    }
-    store.dispatch(action)
+  const add = (wombat) => {
+    store.dispatch(addWombat(wombat))
   }
 
+  const update = (wombat) => {
+    store.dispatch(updateWombat(wombat))
+  }
+
+  
   const [theWombat, setTheWombat] = useState('')
   
   const handleChange = (e) => {
@@ -42,25 +29,16 @@ function Wombats (props) {
   return (
     <div>
       <h1>Wombats and Aardvarks</h1>
-      {/* <div>
-        <ul>
-          {aardvarks.map((aardvark) => {
-            return <li key={aardvark}
-            >{aardvark}
-            </li>
-          })}
-        </ul>
-      </div> */}
       <div>
         <ul>
           {wombats.map((wombat) => {
           return <li key={wombat}
           >{wombat}
-            <button onClick={() => deleteWombat(wombat)}>delete</button>
+            <button onClick={() => del(wombat)}>delete</button>
             <form>
               <label>update wombat</label>
               <input type="text" name='name' onChange={handleChange}/>
-              <button onClick={() => updateWombat(wombat, theWombat)} type='button'>update</button>
+              <button onClick={() => update(wombat, theWombat)} type='button'>update</button>
             </form>
           </li>})}
 
@@ -70,7 +48,7 @@ function Wombats (props) {
           <form>
             <label>wombat name</label>
             <input type='text' name='name' onChange={handleChange}/>
-            <button onClick={() => addWombat(theWombat)} type='button'>submit</button>
+            <button onClick={() => add(theWombat)} type='button'>submit</button>
           </form>
         </ul>
       </div>
