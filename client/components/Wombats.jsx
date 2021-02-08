@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import { addWombat, delWombat, updateWombat } from '../actions'
 
 function Wombats (props) {
   const {store} = props
   const state = store.getState()
   const wombats = state.wombats
 
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState('')
 
   const handleChange = (event) => {
     event.persist()
@@ -17,32 +18,42 @@ function Wombats (props) {
     })
   }
 
-  const handleSubmit = (event, wombat) => {
+  const handleUpdate = (event, wombat) => {
     event.preventDefault()
-    const action = {
-      type: 'UPDATE_WOMBAT',
-      wombat: wombat,
-      newWombat: event.target.newWombat.value
-    }
-    store.dispatch(action)
+
+    const action = updateWombat(wombat, formData.newWombat)
+    props.store.dispatch(action)
+
+    // const action = {
+    //   type: 'UPDATE_WOMBAT',
+    //   wombat: wombat,
+    //   newWombat: event.target.newWombat.value
+    // }
   }
 
   const handleDelete = (event, wombat) => {
     event.preventDefault()
-    const action = {
-      type: 'DEL_WOMBAT',
-      wombat: wombat
-    }
-    store.dispatch(action)
+
+    const action = delWombat(wombat)
+    props.store.dispatch(action)
+
+    // const action = {
+    //   type: 'DEL_WOMBAT',
+    //   wombat: wombat
+    // }
   }
 
-  const addWombat = (event) => {
+  const handleAdd = (event) => {
     event.preventDefault()
-    const action = {
-      type: 'ADD_WOMBAT',
-      wombat: formData.wombat
-    }
-    store.dispatch(action)
+
+    const action = addWombat(formData.wombat)
+    props.store.dispatch(action)
+    setFormData('')
+    
+    // const action = {
+    //   type: 'ADD_WOMBAT',
+    //   wombat: formData.wombat
+    // }
   }
 
   return (
@@ -53,10 +64,10 @@ function Wombats (props) {
         <ul>
           {wombats.map((wombat) => 
           <li key={wombat}>{wombat}
-            <form onSubmit={(event) => handleSubmit(event, wombat)}>
+            <form onSubmit={(event) => handleUpdate(event, wombat)}>
               <label>
                 Update Wombat:
-                <input type='text' name='newWombat' />
+                <input type='text' name='newWombat' onChange={(event) => handleChange(event)} />
               </label>
               <button>Submit</button>
             </form>
@@ -65,7 +76,7 @@ function Wombats (props) {
         </ul>
         
         <div className='wombat-container'>
-          <form onSubmit={addWombat}>
+          <form onSubmit={handleAdd}>
           <label>
               Add Wombat:
               <input type='text' name='wombat' onChange={(event) => handleChange(event)} />
