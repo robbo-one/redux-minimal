@@ -11,14 +11,15 @@ const wombatReducer = (state = initialWombatState, action) => {
       return {
         wombats: [...state.wombats, action.wombat],
       };
-    case "DEL_WOMBAT":
+    case "DEL_WOMBAT"://comes from wombats component
       return {
         wombats: state.wombats.filter((wombat) => wombat !== action.wombat),
         //filter over wombats and return those wombats where no action
       };
 
     case "UPDATE_WOMBAT":
-      //we iterate over each oldWombat that are in old state, check if oldWombat = action oldName, if so, return new name. otherwise return old wombat.
+      //Iterate over each oldWombat. If oldWombat equals action.oldname, return new
+      // name. otherwise return old wombat.
       return {
         wombats: state.wombats.map((oldWombat) => {
           if (oldWombat == action.oldName) {
