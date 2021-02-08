@@ -1,4 +1,5 @@
 import React from "react";
+import AddWombat from "./AddWombat";
 
 //4= store can be seen in props object. Props is an object that has store
 //component accepts user input
@@ -25,10 +26,10 @@ function Wombats(props) {
           <li key={wombat}>
             {wombat}
             <button onClick={() => del(wombat)}>Delete</button>
-            {/* <input name="newName" placeholder={wombat} /> */}
           </li>
         ))}
       </ul>
+      <AddWombat store={store} />
     </div>
   );
 }
