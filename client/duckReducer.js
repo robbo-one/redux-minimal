@@ -14,7 +14,7 @@ const duckReducer = (state = initialDuckState, action) => {
       }
     case 'UPDATE_DUCK':
       return {
-        ducks: state.wombats.map((duck) => {
+        ducks: state.ducks.map((duck) => {
           if (
             duck === action.duck 
           ){
@@ -28,3 +28,4 @@ const duckReducer = (state = initialDuckState, action) => {
       return state
   }
 }
+export default duckReducer

@@ -30,16 +30,18 @@ const addWombat = (evt) => {
   store.dispatch(action)
 }
 
-const updateWombat = (evt, wombat) => {
+const updateWombat = (evt) => {
   evt.preventDefault ()
+  const wombat = newWombat
   const action = {
     type: 'UPDATE_WOMBAT',
-    wombat: wombat,
-    newWombat: newWombat
+    wombat: wombat
   }
   console.log(action)
   store.dispatch(action)
 }
+
+
 
 
   return (
@@ -50,9 +52,8 @@ const updateWombat = (evt, wombat) => {
         <br/>
         <br/>
         <button onClick={()=> deleteWombat(wombat)}>Delete this Wombat</button>
-
-        <form onSubmit={ (evt) =>
-          updateWombat(evt, wombat)} >
+        <form onSubmit={
+          updateWombat } >
           <p>Update this Wombat</p>
           <input type= ''
           onChange={handleChange}/>
@@ -61,7 +62,7 @@ const updateWombat = (evt, wombat) => {
         </li>)}
 
         <form onSubmit={
-          addWombat} >
+          addWombat } >
           <p>Add a Wombat</p>
           <input type= ''
           onChange={handleChange}/>
