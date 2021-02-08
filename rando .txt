@@ -1,0 +1,17 @@
+{
+type: 'ADD_WOMBAT'
+wombat: 'Bojack'
+}
+{
+type: 'ADD_WOMBAT',
+wombat: 'Montgomery'
+}
+{
+type: 'DEL_WOMBAT',
+wombat: 'Montgomery'
+}
+{
+type: 'UPDATE_WOMBAT',
+wombat: 'Gertrude',
+newName: 'Gerty',
+}
