@@ -24,8 +24,8 @@ function Dragons (props) {
     evt.preventDefault()
     store.dispatch({
     type: 'UPDATE_DRAGON',
-    oldwombat: dragon,
-    newWombat: evt.target.newDragon.value
+    olddragon: dragon,
+    newDragon: evt.target.newDragon.value
     })
   }
 
@@ -53,8 +53,8 @@ function Dragons (props) {
     
     <form onSubmit={addDragon}>
       <label>
-        Add a Wombat! <br></br>
-        <input type="text" name="newDragon" placeholder="new dragon"></input>
+        Add a Dragon! <br/>
+        <input type="text" name="newDragon" placeholder="Name a Daragon"></input>
       </label>
       <button>Add!</button>
     </form>

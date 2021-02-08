@@ -3,14 +3,12 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 
 import App from './components/App'
-import { myReducer } from './myReducers'
+import combineReducers from './reducers'
 
-const state = createStore(wombatReducer,
+const store = createStore(combineReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
-const dragons = createStore(dragonReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+
 
 document.addEventListener('DOMContentLoaded', () => {
   render()
@@ -19,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function render () {
   ReactDOM.render(
-    <App store={myReducer} />,
+    <App store={store} />,
     document.getElementById('app')
   )
 }

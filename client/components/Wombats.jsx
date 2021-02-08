@@ -53,8 +53,8 @@ function Wombats (props) {
     
     <form onSubmit={addWombat}>
       <label>
-        Add a Wombat! <br></br>
-        <input type="text" name="newWombat" placeholder="new wombat"></input>
+        Add a Wombat! <br/>
+        <input type="text" name="newWombat" placeholder="Name a Wombat"></input>
       </label>
       <button>Add!</button>
     </form>
