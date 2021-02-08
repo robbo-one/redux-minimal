@@ -1,31 +1,34 @@
 import React from "react";
+
 //4= store can be seen in props object. Props is an object that has store
 //component accepts user input
 function Wombats(props) {
   const { store } = props; //component grabs store out of props
-  const state = store.getState();
-  console.log(state)
-  //getState returns the current state tree of your application. It's equal to ???
+  const state = store.getState(); //getstate returns current state tree of app
+  console.log(state);
   const wombats = state.wombats;
+
+  const del = (wombat) => {
+    console.log(wombat);
+    const action = {
+      type: "DEL_WOMBAT",
+      wombat: wombat,
+    };
+    store.dispatch(action);
+  };
+
   return (
     <div>
       <h1>Wombats</h1>
       <ul>
         {wombats.map((wombat) => (
-          <li key={wombat}>{wombat}</li>
+          <li key={wombat}>
+            {wombat}
+            <button onClick={() => del(wombat)}>Delete</button>
+            {/* <input name="newName" placeholder={wombat} /> */}
+          </li>
         ))}
       </ul>
-      <button
-        onClick={() => {
-          const action = {
-            type: "ADD_WOMBAT",
-            wombat: "Hannah",
-          };
-          store.dispatch(action);
-        }}
-      >
-        Click me!
-      </button>
     </div>
   );
 }

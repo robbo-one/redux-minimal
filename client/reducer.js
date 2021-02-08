@@ -4,6 +4,7 @@ const initialWombatState = {
 
 //starts with user action - object just dispatched. While is is in reducer it is in limbo. State is then updated from store.
 //reducer functions take two values - initial state and action to be taken eg add wombat
+
 const wombatReducer = (state = initialWombatState, action) => {
   switch (action.type) {
     case "ADD_WOMBAT":
