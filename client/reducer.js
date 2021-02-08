@@ -18,10 +18,10 @@ const wombatReducer = (state = initialWombatState, action) => {
       return {
         wombats: state.wombats.map(wombat => {
           // return wombat === action.oldWombat ? action.newWombat : wombat
-          if(wombat === action.newWombat) {
-            state.wombats.push(wombat)
+          if(wombat === action.oldWombat) {
+             return action.newWombat
           }
-          return state.wombats
+          return wombat
         })
     }
     default:
