@@ -25,7 +25,7 @@ function Wombats (props) {
 
   function updateWombat(e, wombat) {
     e.preventDefault()
-    console.log(e.target.updatedWombat.value)
+    // console.log(e.target.updatedWombat.value)
     const action = {
       type: 'UPDATE_WOMBAT',
       newWombat: e.target.updatedWombat.value,
@@ -56,7 +56,7 @@ function Wombats (props) {
           <input type='text' name='newWombat'></input>
           <button type='submit'>Add wombat</button>
         </form>
-        
+
       </ul>
     </div>
   )
