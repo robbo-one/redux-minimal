@@ -20,17 +20,23 @@ function Wombats (props) {
       wombat: e.target.newWombat.value
     }
     store.dispatch(action)
+    e.target.newWombat.value = ""
   }
 
-  function updateWombat(e) {
+  function updateWombat(e, wombat) {
     e.preventDefault()
+    console.log(e.target.updatedWombat.value)
     const action = {
       type: 'UPDATE_WOMBAT',
-      wombat: e.target.updateWombat.value
+      newWombat: e.target.updatedWombat.value,
+      oldWombat: wombat
     }
     
     store.dispatch(action)
+    e.target.updatedWombat.value = ""
   }
+  
+  console.log(state)
 
   return (
     <div>
@@ -38,15 +44,19 @@ function Wombats (props) {
       <ul>
         {wombats.map((wombat) => <li key={wombat}>{wombat}
           <button onClick={() => deleteWombat(wombat)}>Delete</button>
-         
-          <input type='text' name='updatedWombat'></input>
-          <button type='submit' onSubmit={updateWombat}>Submit</button>
-          
+
+          <form onSubmit={(e) => updateWombat(e, wombat)}>
+            <input type='text' name='updatedWombat'></input>
+            <button type='submit'>Submit</button>
+          </form>
+
         </li>)}
+
         <form onSubmit={addWombat}>
           <input type='text' name='newWombat'></input>
           <button type='submit'>Add wombat</button>
         </form>
+        
       </ul>
     </div>
   )

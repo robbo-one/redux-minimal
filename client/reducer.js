@@ -4,7 +4,7 @@ const initialWombatState = {
 }
 
 const wombatReducer = (state = initialWombatState, action) => {
-  console.log(state)
+  
   switch (action.type) {
     case 'ADD_WOMBAT':
       return {
@@ -20,7 +20,7 @@ const wombatReducer = (state = initialWombatState, action) => {
         wombats: state.wombats.map(wombat => {
           // return wombat === action.oldWombat ? action.newWombat : wombat
           if(wombat === action.oldWombat) {
-             return action.newWombat
+            return action.newWombat
           }
           return wombat
         })
