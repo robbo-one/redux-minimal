@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { combineReducers } from 'redux'
+import { createStore } from 'redux'
 
 import App from './components/App'
-// import wombatReducer from './reducer'
-import aardvarkReducer from './areducer'
+import rootReducer from './reducer'
 
-const store = createStore(wombatReducer,
+
+const store = createStore(rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

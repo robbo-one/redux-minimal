@@ -1,44 +1,54 @@
 import { combineReducers } from 'redux'
 
-const initialWombatState = {
-  wombats: ['Gertrude', 'Bartholemew']}
-const initialAardvarkState = {
-    aardvarks: ['leptodon', 'adametzi']
-  }
+const initialWombatState = ['Gertrude', 'Bartholemew']
+const initialAardvarkState = ['leptodon', 'adametzi']
+  
 
 
 const wombatReducer = (state = initialWombatState, action) => {
   switch (action.type) {
     case 'ADD_WOMBAT':
-      return {
-        wombats: [...state.wombats, action.wombat]
-      }
+      return [...state, action.wombat]
+      
     case 'DEL_WOMBAT':
-      return {
-        wombats: state.wombats.filter((wombat) => wombat !== action.wombat)
-      }
+      return state.filter((wombat) => wombat !== action.wombat)
+      
     case 'UPDATE_WOMBAT':
-      return {
-        wombats: state.wombats.map((wombat) => {
+      return state.map((wombat) => {
           if (wombat == action.wombat){
            wombat = action.newName  
           }
             return wombat
          })
-      }
+      
     default:
       return state
   }
 }
 
 const aardvarkReducer = (state = initialAardvarkState, action) => {
-  if(action.type === 'ADD_AARDVARK') {
-      return {
-          aardvarks: [...state.wombats, action.aardvark]
-      }
-  }
-  else {
+ switch(action.type) {
+   case 'ADD_AARDVARK':
+     return [...state, action.aardvark]
+    case 'DEL_AARDVARK':
+      return state.filter((aardvark) => aardvark !== action.aardvark)
+      
+    case 'UPDATE_AARDVARK':
+      return state.map((aardvark) => {
+          if (aardvark == action.aardvark){
+            aardvark = action.newName  
+          }
+            return aardvark
+         })
+      
+    default:
       return state
-  }
+ }
 }
-export default wombatReducer
+
+const rootReducer = combineReducers({
+  wombats: wombatReducer,
+  aardvarks: aardvarkReducer
+})
+
+export default rootReducer

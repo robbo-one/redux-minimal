@@ -1,4 +1,5 @@
 import React from 'react'
+import { addWombat } from '../actions'
 
 function Wombats (props) {
   const {store} = props
@@ -6,26 +7,26 @@ function Wombats (props) {
   const wombats = state.wombats
 
   const deleteWombat = (wombat) => {
-    store.dispatch({
+    const action = {
       type: 'DEL_WOMBAT',
       wombat: wombat
-    })
+    }
+    store.dispatch(action)
   }
-  const addWombat = (evt) => {
+  const newWombat = (evt) => {
     evt.preventDefault()
-    store.dispatch({
-      type: 'ADD_WOMBAT',
-      wombat: evt.target.newName.value
-    })
+    console.log(evt.target.newName.value)
+    store.dispatch(addWombat(evt.target.newName.value))
   }
 
   const updateWombat = (wombat, evt) => {
     evt.preventDefault()
-    store.dispatch({
+    const action = {
       type: 'UPDATE_WOMBAT',
       wombat: wombat,
       newName: evt.target.newName.value
-    })
+    }
+    store.dispatch(action)
   }
   return (
     <div>
@@ -35,21 +36,22 @@ function Wombats (props) {
         <button onClick={() => deleteWombat(wombat)}>DELETE</button>
         <form onSubmit={(evt) => updateWombat(wombat, evt)}>
         <label>
-          Update Wombat<br></br>
+          Update Wombat  </label><br></br>
           <input type="text" name="newName"></input>
-        </label>
-        <button>Update!</button>
+      
+        <button type='submit'>Update!</button>
         </form>
+        <br></br>
         </li>
         )}
         </ul>
+        <br></br>
 
      
-      <form onSubmit={addWombat}>
-        <label>
-          Add a Wombat! <br></br>
-          <input type="text" name="newName"></input>
-        </label>
+      <form onSubmit={newWombat}>
+        <label>Add a Wombat!</label><br></br>
+          <input type="text" name="newName"/>
+  
         <button>Add!</button>
       </form>
     </div>
