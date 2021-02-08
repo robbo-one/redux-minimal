@@ -13,6 +13,16 @@ function Wombats (props) {
     store.dispatch(action) 
   }
 
+  function addWombat(e) {
+    e.preventDefault()
+    const action = {
+      type: 'ADD_WOMBAT',
+      wombat: e.target.newWombat.value
+    }
+    store.dispatch(action)
+    
+  }
+
   return (
     <div>
       <h1>Wombats</h1>
@@ -20,6 +30,10 @@ function Wombats (props) {
         {wombats.map((wombat) => <li key={wombat}>{wombat}
           <button onClick={() => deleteWombat (wombat)}>Delete</button>
         </li>)}
+        <form onSubmit={addWombat}>
+          <input type='text' name='newWombat'></input>
+          <button type='submit'>Add wombat</button>
+        </form>
       </ul>
     </div>
   )
