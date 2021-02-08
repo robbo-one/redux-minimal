@@ -52,8 +52,6 @@ function Aardvarks(props){
         ))}
       </ul>
 
-
-
       <form onSubmit={addAardvark}>
         <label>
           Add an Aardvark! <br></br>
