@@ -27,3 +27,25 @@ export function updateWombat (oldWombat, newWombat) {
     newWombat: newWombat
   }
 }
+
+export function addAardvark (aardvark) {
+  return {
+    type: ADD_AARDVARK,
+    aardvark: aardvark
+  }
+}
+
+export function deleteAardvark (aardvark) {
+  return {
+    type: DEL_AARDVARK,
+    aardvark: aardvark
+  }
+}
+
+export function updateAardvark (oldAardvark, newAardvark) {
+  return {
+    type: UPDATE_AARDVARK,
+    oldAardvark: oldAardvark,
+    newAardvark: newAardvark
+  }
+}
