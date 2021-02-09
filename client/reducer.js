@@ -1,53 +1,39 @@
 const initialWombatState = {
-  wombats: ['Gertrude', 'Bartholemew']  // initial global state
+  wombats: ['Gertrude', 'Bartholemew'],
+  // aardvarks: ['Jim', 'Sally']
 }
-
-
-// a reducer is just a function. heres what state should look like after the function has gone through.
-
 
 const wombatReducer = (state = initialWombatState, action) => {
   switch (action.type) {
     case 'ADD_WOMBAT':
       return {
-        wombats: [...state.wombats, action.wombat] // spread operator, take existing wombats and add the wombat to existing
+        wombats: [...state.wombats, action.wombat]
       }
     case 'DEL_WOMBAT':
       return {
         wombats: state.wombats.filter((wombat) => wombat !== action.wombat)
       }
-      case 'UPDATE_WOMBAT':
-        return {
-          wombats: state.wombats.map((wombat) => {
-            if (wombat === action.wombat) {
-            return action.newWombat
-          } else {
-            return wombat
-            }
-          })
-         
-        }
-    default: // if neither returns to default state
+    default:
       return state
   }
 }
 
-export default wombatReducer
-
-
-//could also be written using if/else statements
-
+// Could just be an if/else statement
 // const wombatReducer = (state = initialWombatState, action) => {
-//   if  (action.type) {
-//     case 'ADD_WOMBAT':
+//   if (action.type === 'ADD_WOMBAT') {
 //       return {
-//         wombats: [...state.wombats, action.wombat] // spread operator, take existing wombats and add the wombat to existing
+//         wombats: [...state.wombats, action.wombat]
 //       }
-//     else if (action.type === 'DEL_WOMBAT') {}
+//   } else if (action.type === 'DEL_WOMBAT') {
 //       return {
 //         wombats: state.wombats.filter((wombat) => wombat !== action.wombat)
 //       }
-//     else { // if neither returns to default state
-//       return state
+//   } else {
+//     return state
 //   }
 // }
+
+
+
+export default wombatReducer
+

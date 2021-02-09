@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux' // import this to use REdux
 
 import App from './components/App'
-import wombatReducer from './reducer'
+import reducers from './reducers'
 
-const store = createStore(wombatReducer,//we call it here, store has the event bus 
+const store = createStore(reducers,//we call it here, store has the event bus 
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
 )
 
