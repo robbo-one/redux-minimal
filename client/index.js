@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux' // import this to use REdux
+import { Provider } from 'react-redux'
 
 import App from './components/App'
 import reducers from './reducers'
@@ -10,13 +11,13 @@ const store = createStore(reducers,//we call it here, store has the event bus
 )
 
 document.addEventListener('DOMContentLoaded', () => {
-  render()
-  store.subscribe(render) // this subscribes to changes and anytime something changes, it calls the render function below and renders the page again
-})
-
-function render () {
   ReactDOM.render(
-    <App store={store} />, //REdux is the store
+    <Provider store={store}> 
+                                {/* // By wrapping App in <Provider> ... </Provider> everything in app will know about redux. */}
+    <App />
+    </Provider>,
     document.getElementById('app')
   )
-}
+})
+
+

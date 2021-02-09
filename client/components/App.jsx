@@ -6,8 +6,8 @@ import Wombats from './Wombats'
 function App (props) {
   return (
     <div>
-      <Wombats store={props.store} />
-      <AddWombat store={props.store} />
+      <Wombats  />
+      <AddWombat />
     </div>
   )
 }

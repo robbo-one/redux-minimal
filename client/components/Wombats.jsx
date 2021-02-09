@@ -1,14 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { delWombat } from '../actions'
 
+
 function Wombats (props) {
-  const store = props.store
-  const state = store.getState()
-  const wombats = state.wombats
+  // Old redux connection code,
+  // Without react-redux connect and mapStateProps
+  // const store = props.store
+  // const state = store.getState()
+  // const wombats = state.wombats
+  
+  const wombats = props.wombats
 
   const del = (wombat) => {
-    store.dispatch(delWombat(wombat))
+    props.dispatch(delWombat(wombat))
   }
+  
+  
 
   return (
     <div>
@@ -26,7 +34,14 @@ function Wombats (props) {
   )
 }
 
-export default Wombats
+function mapStateToProps(globalState) {
+return { 
+  wombats: globalState.wombats
+}
+
+}
+
+export default connect(mapStateToProps)(Wombats)
 
 
 
